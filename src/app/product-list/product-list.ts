@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CartService } from '../cart.service';
 
 interface Product {
   id: number;
@@ -33,6 +34,8 @@ interface Brand {
   styleUrl: './product-list.css',
 })
 export class ProductList implements OnInit {
+  private cartService = inject(CartService);
+
   isFiltersOpen = false;
   priceRange = { min: 0, max: 2000 };
   minRating = 0;
@@ -245,5 +248,10 @@ export class ProductList implements OnInit {
   addToCart(product: Product) {
     // Implement add to cart
     console.log('Add to cart:', product);
+    this.openCart();
+  }
+
+  openCart() {
+    this.cartService.openCart();
   }
 }
