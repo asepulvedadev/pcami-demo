@@ -1,3 +1,87 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles for PCami Gaming E-commerce */
 
-@import "tailwindcss";
+body {
+  min-height: max(884px, 100dvh);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.cyber-grid {
+  background-image:
+    linear-gradient(rgba(0, 255, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.hexagon-clip {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+.neon-glow-green {
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.4);
+}
+
+.neon-glow-fuchsia {
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
+}
+
+.ios-bottom-nav {
+  backdrop-filter: blur(10px);
+  background-color: rgba(10, 10, 10, 0.8);
+}
+
+.text-neon-title {
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5), 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.neon-border {
+  box-shadow: 0 0 5px #00ff00, inset 0 0 2px #00ff00;
+}
+
+.neon-text-fuchsia {
+  text-shadow: 0 0 8px #ff00ff;
+}
+
+.neon-text-primary {
+  text-shadow: 0 0 8px #00ff00;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.clip-hex {
+  clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+}
+
+.hud-scanline {
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+.neon-glow-pink {
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+}
+
+.heavy-glow-btn {
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.6);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

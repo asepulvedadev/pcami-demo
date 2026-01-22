@@ -1,0 +1,80 @@
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto border-x border-primary/10 bg-background-dark">
+<div class="fixed inset-0 hud-scanline opacity-20 z-50 pointer-events-none"></div>
+<header class="sticky top-0 z-40 bg-background-dark/90 backdrop-blur-md border-b border-primary/20">
+<div class="flex items-center p-4 justify-between">
+<div class="text-primary flex size-10 items-center justify-center border border-primary/30 rounded-sm">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</div>
+<div class="flex flex-col items-center text-center">
+<h2 class="text-primary text-[10px] font-bold tracking-[0.2em] uppercase">PCAMI CÚCUTA</h2>
+<h1 class="text-white text-lg font-bold leading-tight tracking-widest uppercase">TU_CARRITO_BOTIN.SYS</h1>
+</div>
+<button class="flex size-10 items-center justify-center border border-red-500/50 text-red-500 rounded-sm hover:bg-red-500/10">
+<span class="material-symbols-outlined">delete_sweep</span>
+</button>
+</div>
+</header>
+<div class="flex flex-col gap-2 p-4 mt-2">
+<div class="flex justify-between items-end">
+<p class="text-cyber-blue text-xs font-bold tracking-tighter uppercase italic">ESTADO LOGÍSTICA: NEUTRAL</p>
+<p class="text-cyber-blue text-sm font-bold leading-none tabular-nums">$25.00 PARA ENVÍO GRATIS</p>
+</div>
+<div class="h-3 w-full bg-cyber-blue/10 border border-cyber-blue/30 p-[2px]">
+<div class="h-full bg-cyber-blue shadow-[0_0_10px_rgba(0,240,255,0.7)]" style="width: 75%;"></div>
+</div>
+<p class="text-cyber-blue/60 text-[10px] uppercase tracking-widest font-mono">PORTADOR_BLUE_HUD_V2.01_ENVIO_GRATIS</p>
+</div>
+<main class="flex-1 overflow-y-auto px-4 py-2 space-y-4">
+<div class="group relative flex items-center gap-4 bg-primary/5 border border-primary/20 p-3 rounded-sm" *ngFor="let item of cartItems; trackBy: trackByItemId">
+<div class="absolute -left-[1px] top-0 h-full w-[2px] bg-primary"></div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-sm size-16 border border-primary/40" [style.background-image]="'url(' + item.image + ')'">
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<p class="text-white text-sm font-bold tracking-tight uppercase truncate">{{item.name}}</p>
+<p class="text-primary/70 text-xs font-mono mt-1">${{item.price}} <span class="text-white/30">| REF_ID: {{item.id}}</span></p>
+</div>
+<div class="flex items-center gap-1 border border-primary/40 bg-black/40 p-1 rounded-sm">
+<button class="size-7 flex items-center justify-center text-primary hover:bg-primary/20 transition-colors" (click)="decreaseQuantity(item)">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<input class="w-6 p-0 text-center bg-transparent border-none text-white text-sm font-bold focus:ring-0" readonly type="number" [value]="item.quantity"/>
+<button class="size-7 flex items-center justify-center text-primary hover:bg-primary/20 transition-colors" (click)="increaseQuantity(item)">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+</main>
+<footer class="mt-auto bg-background-dark/95 border-t-2 border-primary/20 p-6 space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-xs tracking-widest text-white/50 uppercase">
+<span>Subtotal</span>
+<span class="font-mono text-cyber-pink">${{getSubtotal()}}</span>
+</div>
+<div class="flex justify-between text-xs tracking-widest text-white/50 uppercase">
+<span>Impuestos (7.5%)</span>
+<span class="font-mono">${{(getSubtotal() * 0.075).toFixed(2)}}</span>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="text-xs font-black tracking-[0.3em] uppercase italic text-primary">Total Créditos Est.</span>
+<span class="text-3xl font-bold italic tracking-tighter text-cyber-pink neon-glow-pink uppercase">
+                        ${{getTotal()}}
+                    </span>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -top-2 -left-2 size-4 border-t-2 border-l-2 border-primary"></div>
+<div class="absolute -bottom-2 -right-2 size-4 border-b-2 border-r-2 border-primary"></div>
+<button class="relative w-full py-5 bg-black border-2 border-primary text-primary font-black text-lg tracking-[0.2em] uppercase rounded-sm heavy-glow-btn active:scale-[0.98] transition-all overflow-hidden" (click)="proceedToCheckout()">
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative flex items-center justify-center gap-3">
+<span class="material-symbols-outlined">double_arrow</span>
+                        CONTINUAR AL PAGO
+                    </div>
+<div class="absolute bottom-1 w-full text-center">
+<span class="text-[8px] tracking-[0.4em] opacity-40 font-mono">CONFIRMAR_COMANDO_TACTICO_V3.9</span>
+</div>
+</button>
+</div>
+<div class="h-4"></div>
+</footer>
+</div>

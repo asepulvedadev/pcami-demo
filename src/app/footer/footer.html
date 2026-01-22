@@ -1,0 +1,95 @@
+<!-- Mobile/Tablet Navigation -->
+<nav class="fixed bottom-0 w-full bg-background-dark/95 border-t border-primary/20 backdrop-blur-xl pb-6 pt-2 px-6 flex justify-between items-center z-50 md:hidden">
+<div class="flex flex-col items-center gap-1 text-primary/40 hover:text-primary cursor-pointer" routerLink="/" routerLinkActive="text-primary">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold uppercase">Inicio</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary/40 hover:text-primary cursor-pointer" routerLink="/productos" routerLinkActive="text-primary">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-[10px] font-bold uppercase">Catálogo</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary/40 hover:text-primary cursor-pointer" routerLink="/explorar" routerLinkActive="text-primary">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[10px] font-bold uppercase">Explorar</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary/40 hover:text-primary cursor-pointer" routerLink="/ajustes" routerLinkActive="text-primary">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase">Ajustes</span>
+</div>
+</nav>
+
+<!-- Desktop Footer -->
+<footer class="hidden md:block bg-background-dark text-white py-12 border-t border-primary/20">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Company Info -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary">bolt</span>
+          <span class="text-xl font-bold text-primary">PCAMI CÚCUTA</span>
+        </div>
+        <p class="text-gray-400 mb-4">
+          Tu destino definitivo para equipos gaming de alta calidad.
+          Rendimiento excepcional, precios competitivos y soporte técnico especializado.
+        </p>
+        <div class="flex gap-4">
+          <a href="#" class="text-gray-400 hover:text-primary"><span class="material-symbols-outlined">facebook</span></a>
+          <a href="#" class="text-gray-400 hover:text-primary"><span class="material-symbols-outlined">twitter</span></a>
+          <a href="#" class="text-gray-400 hover:text-primary"><span class="material-symbols-outlined">instagram</span></a>
+          <a href="#" class="text-gray-400 hover:text-primary"><span class="material-symbols-outlined">discord</span></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-primary font-bold mb-4">Enlaces Rápidos</h3>
+        <ul class="space-y-2">
+          <li><a routerLink="/" class="text-gray-400 hover:text-primary">Inicio</a></li>
+          <li><a routerLink="/productos" class="text-gray-400 hover:text-primary">Productos</a></li>
+          <li><a routerLink="/ofertas" class="text-gray-400 hover:text-primary">Ofertas Especiales</a></li>
+          <li><a routerLink="/contacto" class="text-gray-400 hover:text-primary">Soporte Técnico</a></li>
+        </ul>
+      </div>
+
+      <!-- Categories -->
+      <div>
+        <h3 class="text-primary font-bold mb-4">Categorías</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-primary">PCs Gaming</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-primary">Periféricos</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-primary">Accesorios</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-primary">Componentes</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-primary font-bold mb-4">Contacto</h3>
+        <div class="space-y-2 text-gray-400">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined">phone</span>
+            <span>+57 123 456 7890</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined">email</span>
+            <span>info@pcamicucuta.com</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined">location_on</span>
+            <span>Cúcuta, Colombia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="border-t border-primary/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-400">&copy; 2024 PCAMI CÚCUTA. Todos los derechos reservados.</p>
+      <div class="flex gap-6 mt-4 md:mt-0">
+        <a href="#" class="text-gray-400 hover:text-primary text-sm">Términos de Servicio</a>
+        <a href="#" class="text-gray-400 hover:text-primary text-sm">Política de Privacidad</a>
+        <a href="#" class="text-gray-400 hover:text-primary text-sm">Política de Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>

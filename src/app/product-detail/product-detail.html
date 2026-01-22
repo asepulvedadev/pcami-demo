@@ -1,0 +1,170 @@
+<div class="product-detail">
+  <div class="container">
+    <!-- Product Images -->
+    <div class="product-gallery">
+      <div class="main-image">
+        <img [src]="selectedImage" [alt]="product.name" class="product-image">
+        <div class="image-zoom" *ngIf="isZoomed" [style.background-image]="'url(' + selectedImage + ')'"
+             [style.background-position]="zoomPosition"></div>
+      </div>
+      <div class="thumbnail-gallery">
+        <div class="thumbnail" *ngFor="let image of product.images; let i = index"
+             [class.active]="i === selectedImageIndex"
+             (click)="selectImage(i)">
+          <img [src]="image" [alt]="product.name + ' ' + (i + 1)">
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Info -->
+    <div class="product-info">
+      <div class="product-header">
+        <h1>{{product.name}}</h1>
+        <div class="product-rating">
+          <div class="stars">
+            <i class="fas fa-star" *ngFor="let star of getStars(product.rating)"></i>
+            <i class="far fa-star" *ngFor="let emptyStar of getEmptyStars(product.rating)"></i>
+          </div>
+          <span class="rating-text">{{product.rating}} ({{product.reviews}} reseñas)</span>
+        </div>
+      </div>
+
+      <div class="product-price">
+        <span class="current-price">${{product.price}}</span>
+        <span class="old-price" *ngIf="product.oldPrice">${{product.oldPrice}}</span>
+        <span class="discount" *ngIf="product.discount">{{getDiscountPercentage()}}% OFF</span>
+      </div>
+
+      <div class="product-description">
+        <p>{{product.description}}</p>
+      </div>
+
+      <!-- Quantity Selector -->
+      <div class="quantity-selector">
+        <label for="quantity">Cantidad:</label>
+        <div class="quantity-controls">
+          <button (click)="decreaseQuantity()" [disabled]="quantity <= 1">-</button>
+          <input type="number" id="quantity" [(ngModel)]="quantity" min="1" max="10">
+          <button (click)="increaseQuantity()" [disabled]="quantity >= 10">+</button>
+        </div>
+      </div>
+
+      <!-- Add to Cart -->
+      <div class="action-buttons">
+        <button class="btn add-to-cart" (click)="addToCart()">
+          <i class="fas fa-shopping-cart"></i>
+          Agregar al Carrito
+        </button>
+        <button class="btn wishlist" (click)="toggleWishlist()">
+          <i class="fas" [class.fa-heart]="isInWishlist" [class.fa-heart-o]="!isInWishlist"></i>
+          Lista de Deseos
+        </button>
+      </div>
+
+      <!-- Product Features -->
+      <div class="product-features">
+        <div class="feature" *ngFor="let feature of product.features">
+          <i class="fas fa-check"></i>
+          <span>{{feature}}</span>
+        </div>
+      </div>
+
+      <!-- Share -->
+      <div class="share-section">
+        <span>Compartir:</span>
+        <div class="share-buttons">
+          <button class="share-btn facebook">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+          <button class="share-btn twitter">
+            <i class="fab fa-twitter"></i>
+          </button>
+          <button class="share-btn whatsapp">
+            <i class="fab fa-whatsapp"></i>
+          </button>
+          <button class="share-btn copy-link">
+            <i class="fas fa-link"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Specifications -->
+  <section class="specifications">
+    <h2>Especificaciones Técnicas</h2>
+    <div class="specs-accordion">
+      <div class="spec-group" *ngFor="let spec of product.specifications">
+        <button class="spec-toggle" (click)="toggleSpec(spec.key)">
+          <span>{{spec.category}}</span>
+          <i class="fas" [class.fa-chevron-down]="!expandedSpecs[spec.key]" [class.fa-chevron-up]="expandedSpecs[spec.key]"></i>
+        </button>
+        <div class="spec-content" [class.expanded]="expandedSpecs[spec.key]">
+          <div class="spec-item" *ngFor="let item of spec.items">
+            <span class="spec-label">{{item.label}}:</span>
+            <span class="spec-value">{{item.value}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reviews-section">
+    <h2>Reseñas de Clientes</h2>
+    <div class="reviews-summary">
+      <div class="rating-overview">
+        <div class="average-rating">
+          <span class="rating-number">{{product.rating}}</span>
+          <div class="stars">
+            <i class="fas fa-star" *ngFor="let star of getStars(product.rating)"></i>
+            <i class="far fa-star" *ngFor="let emptyStar of getEmptyStars(product.rating)"></i>
+          </div>
+          <span class="total-reviews">{{product.reviews}} reseñas</span>
+        </div>
+        <div class="rating-breakdown">
+          <div class="rating-bar" *ngFor="let bar of ratingBreakdown">
+            <span class="star-count">{{bar.stars}}★</span>
+            <div class="progress-bar">
+              <div class="progress-fill" [style.width.%]="bar.percentage"></div>
+            </div>
+            <span class="percentage">{{bar.count}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reviews-list">
+      <div class="review-item" *ngFor="let review of product.sampleReviews">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <span class="reviewer-name">{{review.author}}</span>
+            <div class="review-rating">
+              <i class="fas fa-star" *ngFor="let star of getStars(review.rating)"></i>
+              <i class="far fa-star" *ngFor="let emptyStar of getEmptyStars(review.rating)"></i>
+            </div>
+          </div>
+          <span class="review-date">{{review.date}}</span>
+        </div>
+        <p class="review-text">{{review.comment}}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Products -->
+  <section class="related-products">
+    <h2>Productos Relacionados</h2>
+    <div class="related-grid">
+      <div class="related-card" *ngFor="let related of relatedProducts">
+        <div class="related-image">
+          <img [src]="related.image" [alt]="related.name">
+        </div>
+        <div class="related-info">
+          <h3>{{related.name}}</h3>
+          <div class="related-price">${{related.price}}</div>
+          <button class="btn related-btn" (click)="viewProduct(related.id)">Ver Producto</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
