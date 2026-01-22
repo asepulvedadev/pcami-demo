@@ -1,8 +1,10 @@
-<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto border-x border-primary/10 bg-background-dark">
-<div class="fixed inset-0 hud-scanline opacity-20 z-50 pointer-events-none"></div>
-<header class="sticky top-0 z-40 bg-background-dark/90 backdrop-blur-md border-b border-primary/20">
+<div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4" (click)="closeCart()">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md border-x border-primary/10 bg-background-dark rounded-lg" (click)="$event.stopPropagation()">
+<div class="fixed inset-0 hud-scanline opacity-20 pointer-events-none"></div>
+<button class="absolute top-4 right-4 z-50 text-white text-2xl hover:text-primary transition-colors" (click)="closeCart()">×</button>
+<header class="sticky top-0 z-40 bg-background-dark/90 backdrop-blur-md border-b border-primary/20 rounded-t-lg">
 <div class="flex items-center p-4 justify-between">
-<div class="text-primary flex size-10 items-center justify-center border border-primary/30 rounded-sm" routerLink="/productos">
+<div class="text-primary flex size-10 items-center justify-center border border-primary/30 rounded-sm" (click)="closeCart()">
 <span class="material-symbols-outlined">arrow_back_ios_new</span>
 </div>
 <div class="flex flex-col items-center text-center">

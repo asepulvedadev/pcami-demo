@@ -10,10 +10,6 @@ export const routes: Routes = [
     loadComponent: () => import('./product-list/product-list').then(m => m.ProductList)
   },
   {
-    path: 'carrito',
-    loadComponent: () => import('./cart/cart').then(m => m.Cart)
-  },
-  {
     path: '**',
     redirectTo: ''
   }

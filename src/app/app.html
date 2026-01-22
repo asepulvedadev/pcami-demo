@@ -2,4 +2,5 @@
   <app-header></app-header>
   <router-outlet />
   <app-footer></app-footer>
+  <app-cart *ngIf="cartService.showCart" (close)="cartService.closeCart()"></app-cart>
 </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { CartService } from '../cart.service';
 
 interface CartItem {
   id: number;
@@ -15,12 +15,13 @@ interface CartItem {
 
 @Component({
   selector: 'app-cart',
+  standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './cart.html',
   styleUrl: './cart.css',
 })
 export class Cart implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private cartService: CartService) {}
 
   cartItems: CartItem[] = [
     {
@@ -119,6 +120,10 @@ export class Cart implements OnInit {
     console.log('Proceeding to checkout...');
     // For now, just alert
     alert('Funcionalidad de pago próximamente');
+  }
+
+  closeCart() {
+    this.cartService.closeCart();
   }
 
   continueShopping() {
