@@ -3,4 +3,9 @@
   <router-outlet />
   <app-footer></app-footer>
   <app-cart *ngIf="cartService.showCart" (close)="cartService.closeCart()"></app-cart>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/573123456789?text=Hola,%20me%20interesa%20información%20sobre%20productos%20gaming" target="_blank" class="fixed bottom-20 right-6 z-40 size-14 bg-green-500 text-white flex items-center justify-center rounded-full shadow-lg hover:bg-green-600 transition-colors">
+    <span class="material-symbols-outlined">chat</span>
+  </a>
 </div>
