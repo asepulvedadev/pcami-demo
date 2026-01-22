@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 interface CartItem {
   id: number;
@@ -19,6 +20,8 @@ interface CartItem {
   styleUrl: './cart.css',
 })
 export class Cart implements OnInit {
+  constructor(private router: Router) {}
+
   cartItems: CartItem[] = [
     {
       id: 1,
@@ -114,7 +117,8 @@ export class Cart implements OnInit {
 
   proceedToCheckout() {
     console.log('Proceeding to checkout...');
-    // Implement checkout navigation
+    // For now, just alert
+    alert('Funcionalidad de pago próximamente');
   }
 
   continueShopping() {
